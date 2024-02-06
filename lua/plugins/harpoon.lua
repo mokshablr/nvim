@@ -13,5 +13,5 @@ return{
             vim.keymap.set("n", "<leader>a", function () ui.nav_file(3) end)
             vim.keymap.set("n", "<leader>g", function () ui.nav_file(4) end)
         end,
-    }
+  }
 }

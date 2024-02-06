@@ -6,9 +6,14 @@ return{
         },
         lazy = false,
         priority = 1000,
-        opts = {
-            -- All of your `setup(opts)` will go here
-        },
+        config = function ()
+            require('noirbuddy').setup {
+                preset = 'minimal',
+                colors ={
+                    primary="#f9e2af"
+                }
+            }
+        end
     }
 }
 
