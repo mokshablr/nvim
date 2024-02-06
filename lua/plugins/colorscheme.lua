@@ -1,13 +1,20 @@
--- oxocarbon theme
--- vim.opt.background = "dark" -- set this to dark or light
--- vim.cmd("colorscheme oxocarbon")
-
-require("catppuccin").setup({
-    transparent_background = true,
-    integrations = {
-        harpoon = true,
-        mason = true,
+return{
+    {
+        'jesseleite/nvim-noirbuddy',
+        dependencies = {
+            { 'tjdevries/colorbuddy.nvim', branch = 'dev' }
+        },
+        lazy = false,
+        priority = 1000,
+        opts = {
+            -- All of your `setup(opts)` will go here
+        },
     }
-})
-vim.cmd("colorscheme catppuccin")
+}
 
+
+-- Theme
+--OXOCARBON
+-- use { 'nyoom-engineering/oxocarbon.nvim' }
+-- Catpuccin
+-- use { "catppuccin/nvim", as = "catppuccin" }

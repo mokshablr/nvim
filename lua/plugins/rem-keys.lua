@@ -45,3 +45,5 @@ end
 -- For the hint on entry
 notifyKeys()
 setupTimer()
+
+return{}

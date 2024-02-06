@@ -25,6 +25,14 @@ end)
 map.set("n", "<leader>i", function() vim.diagnostic.open_float() end)
 
 -- Plugins
+-- Telescope
+local builtin = require('telescope.builtin')
+map.set('n', '<leader>pf', builtin.find_files, {})
+map.set('n', '<C-p>', builtin.git_files, {})
+map.set('n', '<leader>ps', function()
+	builtin.grep_string({search = vim.fn.input("Grep > ") });
+end)
+
 -- nvim-tree
 map.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- Toggle
 map.set("n", "<leader>d", ":NvimTreeFocus<CR>")  -- Focus on tree when file already open
@@ -37,3 +45,6 @@ map.set("n", "<leader>h", function() require("trouble").toggle("document_diagnos
 map.set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end)
 map.set("n", "<leader>xl", function() require("trouble").toggle("loclist") end)
 map.set("n", "<leader>gr", function() require("trouble").toggle("lsp_references") end)
+
+-- ToggleTerm
+map.set("n", "<leader>`", ":ToggleTerm<CR>")

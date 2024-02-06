@@ -1,1 +1,1 @@
-require("pack")
+require("lazy_init")

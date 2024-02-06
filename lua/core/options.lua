@@ -29,6 +29,8 @@ opt.pumheight = 5
 -- Turn of case-sensitivity for /find
 opt.ignorecase = true
 
+vim.diagnostic.config({ virtual_text = false })
+
 -- Continuous floating diagnostics
 -- vim.o.updatetime = 450
 -- vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
@@ -37,3 +39,12 @@ opt.ignorecase = true
 --     vim.diagnostic.open_float(nil, {focus=false})
 --   end
 -- })
+
+-- Error highlighting
+-- noir-buddy
+vim.api.nvim_set_hl(0, 'DiagnosticUnderlineError', { fg = "#ff0038" })
+vim.api.nvim_set_hl(0, 'DiagnosticUnderlineWarn', { fg = "#ffc800" })
+vim.api.nvim_set_hl(0, 'DiagnosticUnderlineInfo', { fg = "#47eae0" })
+vim.api.nvim_set_hl(0, 'DiagnosticUnderlineHint', { fg = "#47eae0" })
+vim.api.nvim_set_hl(0, 'DiagnosticUnderlineOk', { fg = "LightGreen" })
+vim.api.nvim_set_hl(0, 'ErrorMsg', { fg = "Red" })

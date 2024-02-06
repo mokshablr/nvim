@@ -1,3 +1,3 @@
-require("pack")
+require("lazy_init")
 require("core")
-require("plugins")
+
