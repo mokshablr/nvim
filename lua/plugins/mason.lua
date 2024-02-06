@@ -1,3 +1,21 @@
+local border = {
+    { '┌', 'FloatBorder' },
+    { '─', 'FloatBorder' },
+    { '┐', 'FloatBorder' },
+    { '│', 'FloatBorder' },
+    { '┘', 'FloatBorder' },
+    { '─', 'FloatBorder' },
+    { '└', 'FloatBorder' },
+    { '│', 'FloatBorder' },
+}
+
+local handlers = {
+    ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+    ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+}
+
+
+
 return {
     {
         "https://github.com/williamboman/mason.nvim",
@@ -11,7 +29,7 @@ return {
             local mason_lsp = require('mason-lspconfig')
             local lspconfig = require('lspconfig')
             mason_lsp.setup({
-                ensure_installed = {"pyright", "clangd","tsserver", "rust_analyzer"},
+                ensure_installed = {"pyright", "clangd","tsserver", "rust_analyzer", "html"},
                 handlers = {
                     -- server setup handler
                     function(server)
@@ -44,6 +62,18 @@ return {
                             }
                         }
                     end,
+                    ["html"] = function ()
+                        lspconfig.html.setup({
+                            handlers = handlers,
+                            settigns = {
+                                css = {
+                                    lint = {
+                                        validProperties = {},
+                                    },
+                                },
+                            },
+                        })
+                    end
                 },
             })
 

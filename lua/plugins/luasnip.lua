@@ -6,6 +6,7 @@ return{
         version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
         -- install jsregexp (optional!).
         build = "make install_jsregexp",
+        dependencies = { "rafamadriz/friendly-snippets" },
 
         config = function()
             local ls = require("luasnip")
@@ -61,6 +62,7 @@ return{
                 end
             end, {silent = true})
             vim.keymap.set("n", "<leader><leader>s", "<cmd>source ~/.config/nvim/lua/plugins/luasnip.lua<CR>")
+
         end,
     }
 }

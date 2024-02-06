@@ -18,6 +18,8 @@ return {
     config = function ()
         local cmp = require('cmp')
         local luasnip = require('luasnip')
+        require("luasnip.loaders.from_vscode").load({include={"html", "python"}})
+        luasnip.filetype_extend("javascript", {"html"})
 
         cmp.setup({
             snippet = {
