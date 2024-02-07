@@ -1,4 +1,6 @@
-return{
+-- Snippet engine
+
+return {
 
     {
         "L3MON4D3/LuaSnip",
@@ -42,27 +44,36 @@ return{
             -- For starting of
             ls.add_snippets("c", {
                 s("inc", {
-                    t({"#include<stdio.h>","#include<stdlib.h>"}),
-                    t({"","","int main(){","    "}),
+                    t({ "#include<stdio.h>", "#include<stdlib.h>" }),
+                    t({ "", "", "int main(){", "    " }),
                     i(0),
-                    t({"","}"})
+                    t({ "", "}" })
                 })
             })
 
             -- LuaSnip
-            vim.keymap.set({"i", "s"}, "<c-k>", function ()
-                if ls.expand_or_jumpable() then
-                    ls.expand_or_jump()
-                end
-            end, {silent = true})
+            -- vim.keymap.set({"i", "s"}, "<c-k>", function ()
+            --     if ls.expand_or_jumpable() then
+            --         ls.expand_or_jump()
+            --     end
+            -- end, {silent = true})
+            --
+            -- vim.keymap.set({"i", "s"}, "<c-j>", function ()
+            --     if ls.expand_or_jumpable(-1) then
+            --         ls.expand_or_jump(-1)
+            --     end
+            -- end, {silent = true})
 
-            vim.keymap.set({"i", "s"}, "<c-j>", function ()
-                if ls.expand_or_jumpable(-1) then
-                    ls.expand_or_jump(-1)
-                end
-            end, {silent = true})
+            vim.keymap.set({ "i", "s" }, "<Tab>",
+                function()
+                    if ls.expand_or_jumpable() then
+                        ls.expand_or_jump()
+                    else
+                        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", false)
+                    end
+                end,
+                { silent = true })
             vim.keymap.set("n", "<leader><leader>s", "<cmd>source ~/.config/nvim/lua/plugins/luasnip.lua<CR>")
-
         end,
     }
 }

@@ -1,3 +1,5 @@
+-- Notify
+
 return{
     'rcarriga/nvim-notify',
     config = function ()

@@ -1,8 +1,8 @@
 -- Alpha Dashboard
+
 return {
     'goolord/alpha-nvim',
     config = function()
-
         local alpha = require("alpha")
         local dashboard = require("alpha.themes.dashboard")
 
@@ -73,16 +73,16 @@ return {
 
         -- Auto-Padding inspired from (https://github.com/BeyondMagic/MaGiCK/blob/main/config/nvim/lua/plugins/alpha.lua)
 
-        local ol = {                                -- occupied lines
-        icon            = #header.val,          -- CONST: number of lines that your header will occupy
-        message         = #footer.val,          -- CONST: because of padding at the bottom
-        length_buttons  = #buttons.val * 2 - 1, -- CONST: it calculate the number that buttons will occupy
-        neovim_lines    = 2,                    -- CONST: 2 of command line, 1 of the top bar
-        padding_between = 3,                    -- STATIC: can be set to anything, padding between keybinds and header
+        local ol = {                            -- occupied lines
+            icon            = #header.val,      -- CONST: number of lines that your header will occupy
+            message         = #footer.val,      -- CONST: because of padding at the bottom
+            length_buttons  = #buttons.val * 2 - 1, -- CONST: it calculate the number that buttons will occupy
+            neovim_lines    = 2,                -- CONST: 2 of command line, 1 of the top bar
+            padding_between = 3,                -- STATIC: can be set to anything, padding between keybinds and header
         }
 
         local left_terminal_value = vim.api.nvim_get_option('lines') -
-        (ol.length_buttons + ol.message + ol.padding_between + ol.icon + ol.neovim_lines)
+            (ol.length_buttons + ol.message + ol.padding_between + ol.icon + ol.neovim_lines)
 
         -- Not screen enough to run the command.
         if (left_terminal_value >= 0) then

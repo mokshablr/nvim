@@ -1,18 +1,18 @@
 local notify = require("notify")
 
-function getMessage()
+function GetMessage()
     local messages = {
         -- LSP
-        "<ldr>vrn to rename.",
+        "<ldr>rn to rename.",
         "gd to go to definition.",
         "<ldr>h for error in the document.",
         "Shift+k to get definition.",
         "<C-h> to get signature.",
-        
+
         -- Trouble.nvim
         "<ldr>l to toggle Trouble diagnostics.",
         "<ldr>i to get floating diagnostics.", -- keymap.lua
-        "<ldr>gr to get all references of the variable.",
+        "gr to get all references of the variable.",
 
         -- Harpoon
         "<ldr>q to add files to Harpoon. <ldr>f,s,a,g to switch files.",
@@ -26,24 +26,24 @@ function getMessage()
     return(messages[randomIndex])
 end
 
-function notifyKeys()
-    local message = getMessage()
+function NotifyKeys()
+    local message = GetMessage()
     notify(message, "info", {
         title = "Keybind Hint:"
     })
 end
 
-function setupTimer()
+function SetupTimer()
     local interval = 30 * 60 -- 30 minutes in seconds
 
     vim.fn.timer_start(interval * 1000, function()
-        notifyKeys()
-        setupTimer()  -- Restart the timer for the next interval
+        NotifyKeys()
+        SetupTimer()  -- Restart the timer for the next interval
     end, { repeat_count = -1 })
 end
 
 -- For the hint on entry
-notifyKeys()
-setupTimer()
+NotifyKeys()
+SetupTimer()
 
 return{}

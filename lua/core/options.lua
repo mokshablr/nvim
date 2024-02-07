@@ -28,8 +28,18 @@ opt.pumheight = 5
 
 -- Turn of case-sensitivity for /find
 opt.ignorecase = true
+opt.re = 0
 
-vim.diagnostic.config({ virtual_text = false })
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+    vim.lsp.handlers.hover, {
+        -- Use a sharp border with `FloatBorder` highlights
+        border ="rounded",
+    }
+)
+
+vim.diagnostic.config({
+    virtual_text = false,
+})
 
 -- Continuous floating diagnostics
 -- vim.o.updatetime = 450
@@ -39,12 +49,3 @@ vim.diagnostic.config({ virtual_text = false })
 --     vim.diagnostic.open_float(nil, {focus=false})
 --   end
 -- })
-
--- Error highlighting
--- noir-buddy
-vim.api.nvim_set_hl(0, 'DiagnosticUnderlineError', { fg = "#ff0038" })
-vim.api.nvim_set_hl(0, 'DiagnosticUnderlineWarn', { fg = "#ffc800" })
-vim.api.nvim_set_hl(0, 'DiagnosticUnderlineInfo', { fg = "#47eae0" })
-vim.api.nvim_set_hl(0, 'DiagnosticUnderlineHint', { fg = "#47eae0" })
-vim.api.nvim_set_hl(0, 'DiagnosticUnderlineOk', { fg = "LightGreen" })
-vim.api.nvim_set_hl(0, 'ErrorMsg', { fg = "Red" })
