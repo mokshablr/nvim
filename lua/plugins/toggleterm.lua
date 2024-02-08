@@ -6,9 +6,7 @@ return{
         version = "*",
         lazy = false,
         config = function ()
-            require("toggleterm").setup{
-                open_mapping = [[<leader>`]]
-            }
+            require("toggleterm").setup{}
         end
     }
 }
