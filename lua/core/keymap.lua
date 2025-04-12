@@ -24,9 +24,10 @@ map.set("n", "<leader>i", function() vim.diagnostic.open_float() end)
 local builtin = require('telescope.builtin')
 map.set('n', '<leader>pf', builtin.find_files, {})
 map.set('n', '<C-p>', builtin.git_files, {})
-map.set('n', '<leader>ps', function()
+map.set('n', '<leader>fg', function()
     builtin.grep_string({ search = vim.fn.input("Grep > ") });
 end)
+map.set("n", "<leader>ps", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 
 -- nvim-tree
 map.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- Toggle
@@ -48,7 +49,6 @@ map.set("n", "<leader>`", ":ToggleTerm<CR>")
 vim.keymap.set('n', '<leader>i', vim.diagnostic.open_float)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer

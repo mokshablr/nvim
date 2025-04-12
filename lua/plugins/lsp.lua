@@ -13,7 +13,7 @@ return {
             local mason_lsp = require('mason-lspconfig')
             local lspconfig = require('lspconfig')
             mason_lsp.setup({
-                ensure_installed = {"pyright", "clangd","tsserver", "rust_analyzer", "html"},
+                ensure_installed = {"pyright", "clangd", "rust_analyzer", "html"},
                 handlers = {
                     -- server setup handler
                     function(server)

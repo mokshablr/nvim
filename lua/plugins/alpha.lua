@@ -45,7 +45,7 @@ return {
         buttons.val = {
             buttonhl("n", "  New File", ":ene <BAR> startinsert <CR>", "@function"),
             buttonhl("f", "  Browse files", ":Telescope find_files<CR>", "@function"),
-            buttonhl("r", "󰙮  Recent files", ":Telescope oldfiles<CR>", "@function"),
+            buttonhl("r", "󰙮  Obsidian notes", ":e $HOME/Documents/Obsidian Vault<CR>", "@function"),
             buttonhl("s", "  Settings", ":e $HOME/.config<CR>", "@function")
         }
 
