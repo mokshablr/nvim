@@ -27,18 +27,18 @@ opt.scrolloff = 15
 opt.pumheight = 5
 
 -- Turn of case-sensitivity for /find
-opt.ignorecase = true
+opt.ignorecase = false
 opt.re = 0
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-    vim.lsp.handlers.hover, {
-        -- Use a sharp border with `FloatBorder` highlights
-        border ="rounded",
-    }
+  vim.lsp.handlers.hover, {
+    -- Use a sharp border with `FloatBorder` highlights
+    border = "rounded",
+  }
 )
 
 vim.diagnostic.config({
-    virtual_text = false,
+  virtual_text = false,
 })
 
 -- Continuous floating diagnostics
