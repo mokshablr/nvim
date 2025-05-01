@@ -1,3 +1,4 @@
+-- custom notifications
 local notify = require("notify")
 
 function GetMessage()
@@ -19,6 +20,7 @@ function GetMessage()
 
         -- Misc
         "<ldr>] to format the file.",
+        "gx on a link to open link or filepath",
         -- Add more messages as needed
     }
     

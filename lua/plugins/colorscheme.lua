@@ -1,4 +1,5 @@
 -- Colorscheme for nvim
+-- Repo URL: https://github.com/jesseleite/nvim-noirbuddy
 
 return {
     {
@@ -55,6 +56,8 @@ return {
         config = function ()
             require("tokyonight").setup({
                 style = "night",
+                transparent = false,
+                opacity = 0.1
             })
             vim.cmd[[colorscheme tokyonight]]
         end

@@ -1,4 +1,5 @@
 -- Harpoon
+-- Repo URL: https://github.com/theprimeagen/harpoon
 
 return{
     {

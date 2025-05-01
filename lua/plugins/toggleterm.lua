@@ -1,4 +1,5 @@
 -- ToggleTerm
+-- Repo URL: https://github.com/akinsho/toggleterm.nvim
 
 return{
     {

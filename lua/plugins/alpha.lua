@@ -1,4 +1,5 @@
 -- Alpha Dashboard
+-- Repo URL: https://github.com/goolord/alpha-nvim
 
 return {
     'goolord/alpha-nvim',
@@ -43,7 +44,7 @@ return {
 
         -- Button Menu
         buttons.val = {
-            buttonhl("n", "  New File", ":ene <BAR> startinsert <CR>", "@function"),
+            buttonhl("n", "  .zshrc", ":e $HOME/.zshrc<CR>", "@function"),
             buttonhl("f", "  Browse files", ":Telescope find_files<CR>", "@function"),
             buttonhl("r", "󰙮  Obsidian notes", ":e $HOME/Documents/Obsidian Vault<CR>", "@function"),
             buttonhl("s", "  Settings", ":e $HOME/.config<CR>", "@function")
