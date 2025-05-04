@@ -15,25 +15,6 @@ return {
     config = function() require("fidget").setup {} end,
   },
 
-  -- Telescope
-  {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.5',
-    dependencies = {
-      {
-        'nvim-lua/plenary.nvim',
-      },
-      {
-        "nvim-telescope/telescope-live-grep-args.nvim",
-        version = "^1.0.0",
-      },
-    },
-    config = function()
-      require("telescope").load_extension("live_grep_args")
-      -- require("telescope").load_extension("noice")
-    end
-  },
-
   -- Comments
   {
     'numToStr/Comment.nvim',
@@ -64,11 +45,6 @@ return {
   },
 
   {
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate'
-  },
-
-  {
     'aaron-p1/match-visual.nvim',
     config = function()
       require('match-visual').setup({
@@ -77,4 +53,9 @@ return {
       })
     end
   },
+
+
+  {
+    "mbbill/undotree",
+  }
 }

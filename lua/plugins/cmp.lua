@@ -51,6 +51,25 @@ return {
       }, {
         { name = "buffer" },
       }),
+      -- sorting = {
+      --   comparators = {
+      --     function(entry1, entry2)
+      --       local label1 = entry1.completion_item.label:lower()
+      --       local label2 = entry2.completion_item.label:lower()
+      --       if label1 == label2 then
+      --         return nil
+      --       end
+      --       return label1 < label2
+      --     end,
+      -- cmp.config.compare.offset,
+      -- cmp.config.compare.exact,
+      -- cmp.config.compare.score,
+      -- cmp.config.compare.kind,
+      -- cmp.config.compare.sort_text,
+      -- cmp.config.compare.length,
+      -- cmp.config.compare.order,
+      -- },
+      -- },
 
       mapping = {
         ["<Tab>"] = cmp.mapping(function(fallback)
@@ -121,7 +140,7 @@ return {
     })
 
     -- `/` cmdline setup for buffer search
-    cmp.setup.cmdline("/", {
+    cmp.setup.cmdline({ "/", "?" }, {
       mapping = cmp.mapping.preset.cmdline(),
       completion = { autocomplete = { cmp.TriggerEvent.TextChanged } },
       sources = {
@@ -132,9 +151,28 @@ return {
     -- `:` cmdline setup for commands and paths
     cmp.setup.cmdline(":", {
       mapping = cmp.mapping.preset.cmdline(),
+      sorting = {
+        comparators = {
+          function(entry1, entry2)
+            local label1 = entry1.completion_item.label:lower()
+            local label2 = entry2.completion_item.label:lower()
+            if label1 == label2 then
+              return nil
+            end
+            return label1 < label2
+          end,
+          cmp.config.compare.offset,
+          cmp.config.compare.exact,
+          cmp.config.compare.score,
+          cmp.config.compare.kind,
+          cmp.config.compare.sort_text,
+          cmp.config.compare.length,
+          cmp.config.compare.order,
+        },
+      },
       completion = { autocomplete = { cmp.TriggerEvent.TextChanged } },
       sources = cmp.config.sources({
-        { name = "path" },
+        { name = "path", option = { keyword_pattern = [[\k\+]] } },
       }, {
         {
           name = "cmdline",

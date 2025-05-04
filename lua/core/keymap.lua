@@ -27,31 +27,6 @@ map.set("n", "<leader>i", function()
 end)
 
 -- Plugins
--- Telescope
-local builtin = require("telescope.builtin")
--- map.set('n', '<leader>pf', builtin.find_files, {})
-map.set("n", "<leader>pf", function()
-  builtin.find_files({
-    no_ignore = true, -- Don't respect .gitignore
-    hidden = true,    -- Show hidden files like .env, .gitignore
-    file_ignore_patterns = {
-      "node_modules/",
-      "%.env",
-      "%.lock",
-      "%.git/",
-      "dist/",
-      "__pycache__/",
-      "venv/",
-    },
-  })
-end, {})
-
-map.set("n", "<C-p>", builtin.git_files, {})
-map.set("n", "<leader>fg", function()
-  builtin.grep_string({ search = vim.fn.input("Grep > ") })
-end)
-map.set("n", "<leader>ps", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
-
 -- nvim-tree
 map.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- Toggle
 map.set("n", "<leader>d", ":NvimTreeFocus<CR>")  -- Focus on tree when file already open
@@ -80,10 +55,17 @@ end)
 -- ToggleTerm
 map.set("n", "<leader>t", ":ToggleTerm<CR>")
 
+-- Undotree
+vim.g.undotree_SetFocusWhenToggle = 1
+map.set("n", "<leader>u", function()
+  vim.cmd("UndotreeToggle")
+end)
+
+
 -- Diagnostics
-vim.keymap.set("n", "<leader>i", vim.diagnostic.open_float)
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+map.set("n", "<leader>i", vim.diagnostic.open_float)
+map.set("n", "[d", vim.diagnostic.goto_prev)
+map.set("n", "]d", vim.diagnostic.goto_next)
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -96,21 +78,21 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = ev.buf }
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-    vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, opts)
-    vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
-    vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
-    vim.keymap.set("n", "<leader>wl", function()
+    map.set("n", "gD", vim.lsp.buf.declaration, opts)
+    map.set("n", "gd", vim.lsp.buf.definition, opts)
+    map.set("n", "K", vim.lsp.buf.hover, opts)
+    map.set("n", "gi", vim.lsp.buf.implementation, opts)
+    map.set("n", "<leader>k", vim.lsp.buf.signature_help, opts)
+    map.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
+    map.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
+    map.set("n", "<leader>wl", function()
       print(vim.inspect(vim.lsp.buf.list_workleader_folders()))
     end, opts)
-    vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
-    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-    vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
-    -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)      Currenly used by trouble
-    vim.keymap.set("n", "<leader>]", function()
+    map.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
+    map.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+    map.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+    -- map.set('n', 'gr', vim.lsp.buf.references, opts)      Currenly used by trouble
+    map.set("n", "<leader>]", function()
       vim.lsp.buf.format({ async = true })
     end, opts)
   end,

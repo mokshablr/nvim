@@ -21,7 +21,7 @@ return {
         -- dotfiles = true,
         git_ignored = false,
         custom = {
-          "\\.ds_store",
+          "\\.DS_Store",
         }
       },
       actions = {

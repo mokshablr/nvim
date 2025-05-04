@@ -4,6 +4,7 @@
 return {
   {
     "jesseleite/nvim-noirbuddy",
+    enabled = false,
     dependencies = {
       { "tjdevries/colorbuddy.nvim", branch = "dev" },
     },
@@ -25,15 +26,15 @@ return {
       vim.api.nvim_set_hl(0, "DiagnosticUnderlineOk", { fg = "LightGreen" })
       vim.api.nvim_set_hl(0, "ErrorMsg", { fg = "Red" })
     end,
-    enabled = false,
   },
   {
     "catppuccin/nvim",
+    enabled = false,
     name = "catppuccin",
     priority = 1000,
     config = function()
       require("catppuccin").setup({
-        flavour = "mocha",          -- latte, frappe, macchiato, mocha
+        flavour = "mocha",              -- latte, frappe, macchiato, mocha
         transparent_background = false, -- disables setting the background color.
         integrations = {
           cmp = true,
@@ -45,14 +46,13 @@ return {
       })
       vim.cmd.colorscheme("catppuccin")
     end,
-    enabled = false,
   },
   {
     "folke/tokyonight.nvim",
+    enabled = true,
     lazy = false,
     priority = 1000,
     opts = {},
-    enabled = true,
     config = function()
       require("tokyonight").setup({
         style = "night",
