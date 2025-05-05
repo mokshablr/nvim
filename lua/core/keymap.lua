@@ -13,13 +13,14 @@ end, { desc = "Reload config" })
 map.set("v", "J", ":m '>+1<CR>gv=gv")
 map.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- Copy and paste over other words. Keep copied word in the register.
-map.set("x", "<leader>p", '"_dP')
-
 -- Copy to sys clipboard
-map.set("n", "<leader>y", '"+y')
-map.set("v", "<leader>y", '"+y')
-map.set("n", "<leader>Y", '"+Y')
+map.set("n", "y", '"+y')
+map.set("v", "y", '"+y')
+map.set("n", "Y", '"+Y')
+--
+-- Paste from sys clipboard
+map.set("n", "p", '"+p')
+map.set("v", "p", '"+p')
 
 -- Diagnostic popup
 map.set("n", "<leader>i", function()

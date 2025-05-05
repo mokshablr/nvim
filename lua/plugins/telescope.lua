@@ -17,6 +17,13 @@ return {
     },
   },
   config = function()
+    require("telescope").setup {
+      extensions = {
+        fzf = {}
+      }
+    }
+
+
     local map = vim.keymap
     local builtin = require("telescope.builtin")
 
@@ -59,6 +66,7 @@ return {
       builtin.find_files(opts)
     end)
 
+    require("telescope").load_extension("fzf")
     require("telescope").load_extension("live_grep_args")
     require("telescope").load_extension("noice")
   end
