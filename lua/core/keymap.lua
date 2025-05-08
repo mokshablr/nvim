@@ -17,10 +17,15 @@ map.set("v", "K", ":m '<-2<CR>gv=gv")
 map.set("n", "y", '"+y')
 map.set("v", "y", '"+y')
 map.set("n", "Y", '"+Y')
---
+
 -- Paste from sys clipboard
 map.set("n", "p", '"+p')
 map.set("v", "p", '"+p')
+
+-- Delete to sys clipboard
+map.set("n", "d", '"+d')
+map.set("v", "d", '"+d')
+map.set("n", "D", '"+D')
 
 -- Diagnostic popup
 map.set("n", "<leader>i", function()
@@ -58,7 +63,7 @@ map.set("n", "<leader>t", ":ToggleTerm<CR>")
 
 -- Undotree
 vim.g.undotree_SetFocusWhenToggle = 1
-map.set("n", "<leader>u", function()
+map.set("n", "-", function()
   vim.cmd("UndotreeToggle")
 end)
 

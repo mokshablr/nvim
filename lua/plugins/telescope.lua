@@ -50,7 +50,7 @@ return {
     map.set("n", "<leader>ph", builtin.help_tags, {})
 
     -- Good for bigger files that struggle with live grep
-    map.set("n", "<leader>fg", function()
+    map.set("n", "<leader>gs", function()
       builtin.grep_string({ search = vim.fn.input("Grep > ") })
     end)
 
